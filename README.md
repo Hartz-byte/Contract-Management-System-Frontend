@@ -25,6 +25,64 @@ A modern web application for managing contracts built with React, Vite, and Tail
 - npm or yarn
 - Modern web browser
 
+## Supabase Setup
+
+1. Create a Supabase Account:
+
+- Go to https://supabase.com
+- Sign up for a new account or log in
+
+2. Create a New Project:
+
+- Click "New Project" in the Supabase dashboard
+- Choose a name for your project
+- Set a secure database password
+- Choose your region
+- Wait for the project to be created
+
+3. Set Up Database Schema:
+
+- Go to the SQL editor in your Supabase dashboard
+- Create the contracts table by running the following SQL:
+
+```js
+-- Create contracts table
+CREATE TABLE contracts (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    contract_id VARCHAR(50) UNIQUE NOT NULL,
+    client_name VARCHAR(255) NOT NULL,
+    status VARCHAR(50) NOT NULL DEFAULT 'Draft',
+    content JSONB,
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- Create index for efficient searching
+CREATE INDEX idx_contract_status ON contracts(status);
+CREATE INDEX idx_client_name ON contracts(client_name);
+CREATE INDEX idx_contract_id ON contracts(contract_id);
+
+-- Create function to update timestamp
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+-- Create trigger for updating timestamp
+CREATE TRIGGER update_contracts_updated_at
+    BEFORE UPDATE ON contracts
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+```
+
+4. Get Your API Keys:
+
+- Go to Project Settings > API
+- You'll need: Project URL (VITE_SUPABASE_URL) and public key (VITE_SUPABASE_ANON_KEY)
+
 ## Getting Started
 
 1. Clone the repository:
