@@ -25,7 +25,7 @@ A modern web application for managing contracts built with React, Vite, and Tail
 - npm or yarn
 - Modern web browser
 
-## Supabase Setup
+## Supabase Setup (for your own supabase database and credentials or skip this)
 
 1. Create a Supabase Account:
 
@@ -100,7 +100,7 @@ npm install
 yarn install
 ```
 
-3. Create a .env file in the root directory:
+3. Create a .env file in the root directory (my supabase credentials):
 
 ```js
 VITE_API_URL=http://localhost:5000/api
