@@ -9,7 +9,10 @@ export default function useWebSocket() {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    const socket = io(SOCKET_URL);
+    const socket = io(SOCKET_URL, {
+      transports: ["websocket", "polling"],
+      withCredentials: true,
+    });
 
     // connection check
     socket.on("connect", () => {
