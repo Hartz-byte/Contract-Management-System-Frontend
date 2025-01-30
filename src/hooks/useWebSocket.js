@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import { useQueryClient } from "@tanstack/react-query";
 
 // const SOCKET_URL = "http://localhost:5000";
-const SOCKET_URL = "https://contract-management-system-backend.vercel.app";
+const SOCKET_URL = import.meta.env.VITE_WS_URL;
 
 export default function useWebSocket() {
   const queryClient = useQueryClient();
@@ -12,6 +12,10 @@ export default function useWebSocket() {
     const socket = io(SOCKET_URL, {
       transports: ["websocket", "polling"],
       withCredentials: true,
+      secure: true,
+      reconnection: true,
+      reconnectionAttempts: 5,
+      timeout: 10000,
     });
 
     // connection check

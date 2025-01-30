@@ -15,12 +15,12 @@ export default defineConfig({
     proxy: {
       "/api": {
         // target: "http://localhost:5000",
-        target: "https://contract-management-system-backend.vercel.app",
+        target: import.meta.env.VITE_API_URL,
         changeOrigin: true,
       },
       "/socket.io": {
         // target: "http://localhost:5000",
-        target: "https://contract-management-system-backend.vercel.app",
+        target: import.meta.env.VITE_WS_URL,
         changeOrigin: true,
         ws: true,
       },
