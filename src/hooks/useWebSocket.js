@@ -10,12 +10,17 @@ export default function useWebSocket() {
 
   useEffect(() => {
     const socket = io(SOCKET_URL, {
-      transports: ["websocket", "polling"],
+      transports: ["polling"],
       withCredentials: true,
       secure: true,
       reconnection: true,
       reconnectionAttempts: 5,
       timeout: 10000,
+    });
+
+    // attempt connection check
+    socket.io.on("reconnect_attempt", () => {
+      console.log("Attempting to reconnect...");
     });
 
     // connection check
