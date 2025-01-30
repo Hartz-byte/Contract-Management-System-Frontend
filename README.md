@@ -2,6 +2,8 @@
 
 A modern web application for managing contracts built with React, Vite, and Tailwind CSS. The system allows users to upload, view, edit, and manage contracts with real-time updates through WebSocket integration.
 
+live url: https://contract-management-system.vercel.app/
+
 ## Features
 
 - Upload contract data in text or JSON format
@@ -105,6 +107,9 @@ yarn install
 ```js
 VITE_API_URL=http://localhost:5000/api
 VITE_WS_URL=http://localhost:5000
+# VITE_API_URL=https://contract-management-system-backend.vercel.app/api
+# VITE_WS_URL=https://contract-management-system-backend.vercel.app
+
 VITE_SUPABASE_URL=https://onxpboirptzumzbfryxp.supabase.co
 VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9ueHBib2lycHR6dW16YmZyeXhwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzc5NjExNTQsImV4cCI6MjA1MzUzNzE1NH0.3L8NOuiqN2WSH-DHqGzMm2OMZGQMrGufZ6P6XCeVnKI
 ```
