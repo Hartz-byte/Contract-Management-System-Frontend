@@ -14,8 +14,13 @@ export default function useWebSocket() {
       withCredentials: true,
       secure: true,
       reconnection: true,
-      reconnectionAttempts: 5,
-      timeout: 10000,
+      reconnectionAttempts: 10,
+      reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+      timeout: 60000,
+      autoConnect: true,
+      path: "/socket.io/",
+      forceNew: true,
     });
 
     // attempt connection check
