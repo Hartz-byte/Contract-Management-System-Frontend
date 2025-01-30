@@ -4,6 +4,8 @@ A modern web application for managing contracts built with React, Vite, and Tail
 
 live url: https://contract-management-system.vercel.app/
 
+NOTE: Vercel does not support the custom server functionality (Socket.IO). Therefore, It works fine on local or any other supported cloud platform.
+
 ## Features
 
 - Upload contract data in text or JSON format
