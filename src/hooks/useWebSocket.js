@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { io } from "socket.io-client";
 import { useQueryClient } from "@tanstack/react-query";
 
-const SOCKET_URL = "http://localhost:5000";
+// const SOCKET_URL = "http://localhost:5000";
+const SOCKET_URL = "https://contract-management-system-backend.vercel.app";
 
 export default function useWebSocket() {
   const queryClient = useQueryClient();
